@@ -22,18 +22,18 @@ const CreatePost = ({ image, body, profileMetadata, username }) => {
   });
 
   const handleOnClick = async () => {
-    if (chain.id !== 3141) {
-      toast.error("Connect to Hyperspace Testnet", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-    } else {
+    // if (chain.id !== 80001) {
+    //   toast.error("Connect to Hyperspace Testnet", {
+    //     position: "top-right",
+    //     autoClose: 3000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "dark",
+    //   });
+    // } else {
       try {
         setLoader(true);
         image ? (image = await storeFile(image)) : "";
@@ -70,7 +70,7 @@ const CreatePost = ({ image, body, profileMetadata, username }) => {
         setLoader(false);
         console.log(err);
       }
-    }
+    // }
   };
 
   return (

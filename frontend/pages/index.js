@@ -12,7 +12,7 @@ const Walletconnect = () => {
   const router = useRouter();
   const { primaryProfile } = useContext(ProfileContext);
   useEffect(() => {
-    if ((isConnected && chain.id) === 3141) {
+    if (isConnected ) {
       primaryProfile ? router.push("/home") : router.push("/createuser");
     }
   }, [isConnected]);

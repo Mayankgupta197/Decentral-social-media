@@ -44,21 +44,21 @@ export const ProfileContextProvider = ({ children }) => {
     !isConnected && router.push("/");
   }, [isConnected]);
 
-  useEffect(() => {
-    if (chain && chain.id !== 3141) {
-      toast.error("Connect to Hyperspace Testnet", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-      router.push("/");
-    }
-  }, [chain]);
+  // useEffect(() => {
+  //   if (chain && chain.id !== 80001) {
+  //     toast.error("Connect to Hyperspace Testnet", {
+  //       position: "top-right",
+  //       autoClose: 3000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "dark",
+  //     });
+  //     router.push("/");
+  //   }
+  // }, [chain]);
 
   return (
     <ProfileContext.Provider

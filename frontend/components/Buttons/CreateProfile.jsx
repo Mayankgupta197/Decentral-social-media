@@ -21,18 +21,19 @@ const CreateProfile = ({ handle, userName, profilePic, bio }) => {
   });
 
   const handleOnClick = async () => {
-    if (chain.id !== 3141) {
-      toast.error("Connect to Hyperspace Testnet", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-    } else {
+    // if (chain.id !== 80001) {
+    //   toast.error("Connect to Hyperspace Testnet", {
+    //     position: "top-right",
+    //     autoClose: 3000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "dark",
+    //   });
+    // } else {
+      console.log("herre")
 setLoader(true)
       profilePic = await storeFile(profilePic);
       const metadata = {
@@ -59,7 +60,7 @@ setLoader(true)
       });
       setLoader(false)
       router.push(`/home`);
-    }
+    // }
   };
 
   return (

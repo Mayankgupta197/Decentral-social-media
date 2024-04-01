@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Loader from "@/components/Loader";
 import { WagmiConfig, createClient, configureChains } from "wagmi";
-import { filecoin, filecoinHyperspace } from "wagmi/chains";
+import { sepolia} from "wagmi/chains";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
@@ -13,7 +13,7 @@ import { publicProvider } from "wagmi/providers/public";
 import { ProfileContextProvider } from "@/context/profile";
 
 const { chains, provider } = configureChains(
-  [filecoin, filecoinHyperspace],
+  [sepolia],
   [publicProvider()]
 );
 
