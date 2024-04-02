@@ -9,12 +9,16 @@ import "react-toastify/dist/ReactToastify.css";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
-import { publicProvider } from "wagmi/providers/public";
 import { ProfileContextProvider } from "@/context/profile";
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 
 const { chains, provider } = configureChains(
   [sepolia],
-  [publicProvider()]
+  [ jsonRpcProvider({
+    rpc: (chain) => ({
+      http: `https://eth-sepolia-public.unifra.io`,
+    }),
+  }),],
 );
 
 const client = createClient({

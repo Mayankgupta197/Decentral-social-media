@@ -17,11 +17,13 @@ const Home = () => {
     address: HuddleContract.address,
     abi: HuddleContract.abi,
     functionName: "getUsers",
+    watch: true
   });
-  const { data: posts, isLoading } = useContractRead({
+  const { data: posts, isLoading,refetch } = useContractRead({
     address: HuddleContract.address,
     abi: HuddleContract.abi,
     functionName: "getPost",
+    watch: true
   });
   useEffect(() => {
     isLoading ? setLoader(true) : setLoader(false);
@@ -32,7 +34,9 @@ const Home = () => {
     }
     setUsers(data);
   }, [data, isLoading]);
-  console.log(posts,"posts");
+  
+  // refetch()
+  console.log(posts,"posts",data);
 
   return (
     <div className="flex font-inter ">
