@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>Huddlerr</title>
+        <title>Decentral</title>
       </Head>
       <body>
         <Main />

@@ -24,6 +24,7 @@ const Connect = () => {
     setUsers(data);
     if (data?.length > 0 && !primaryProfile) {
       const resp = data.find((user) => user.account === address);
+      console.log(resp)
       setPrimaryProfile(resp);
     }
   }, []);

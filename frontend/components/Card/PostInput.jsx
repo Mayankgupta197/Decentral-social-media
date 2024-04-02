@@ -69,7 +69,7 @@ const PostInput = () => {
     <div className="bg-[#13141D] border-[#414141] border rounded-lg flex w-[95%] py-4  mx-auto my-2 mb-9">
       <section className="basis-[12%]">
         <Image
-          src={profile?.profile_pic || "/assets/default-user.jpg"}
+          src={profile?.properties?.profile_pic ?  `https://cloudflare-ipfs.com/ipfs/${profile?.properties?.profile_pic.substring(7)}` : "/assets/default-user.jpg"}
           alt="profile-pic"
           width="150"
           height="150"

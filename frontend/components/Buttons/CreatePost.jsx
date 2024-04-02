@@ -12,7 +12,7 @@ const CreatePost = ({ image, body, profileMetadata, username }) => {
   const { chain } = useNetwork();
   const { data: signer } = useSigner();
   const router = useRouter();
-  const { storeFile } = useWeb3Storage();
+  const { storePost} = useWeb3Storage();
   const { setLoader, primaryProfile } = useContext(ProfileContext);
 
   const contract = useContract({
@@ -36,21 +36,24 @@ const CreatePost = ({ image, body, profileMetadata, username }) => {
     // } else {
       try {
         setLoader(true);
-        image ? (image = await storeFile(image)) : "";
+        // image ? (image = await storeFile(image)) : "";
+        // const profile = await axios.get("https://cloudflare-ipfs.com/ipfs/bafyreihpao2af2ttvthe2mvjlglbytm227frxd5hupbsrymguijfiv5ane/metadata.json");
         const profile = await axios.get(primaryProfile?.metadata);
-        const metadata = {
-          image: image,
+        console.log(profile)
+
+        const metadataURI = await storePost(image,{
           body: body,
-          display_name: profile?.data?.display_name,
-          profile_pic: profile?.data?.profile_pic,
+          display_name: profile?.data?.properties.display_name,
+          profile_pic: profile?.data?.properties.profile_pic,
           username: primaryProfile?.username,
-        };
-        console.log(metadata);
-        const blob = new Blob([JSON.stringify(metadata)], {
-          type: "application/json",
         });
-        const file = new File([blob], "post_metadata.json");
-        const metadataURI = await storeFile(file);
+
+
+
+
+
+
+console.log(metadataURI)
         const id = await contract.createPost(metadataURI);
         setLoader(false);
         toast.success("Post Created", {
@@ -65,7 +68,7 @@ const CreatePost = ({ image, body, profileMetadata, username }) => {
         });
         setTimeout(() => {
           router.reload();
-        }, 3000);
+        },4000);
       } catch (err) {
         setLoader(false);
         console.log(err);

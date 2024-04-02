@@ -97,7 +97,7 @@ const LobbyCard = ({ handleClose, roomId, videoRef }) => {
               ) : (
                 <div className="bg-[#635e5e77] w-full h-full rounded-xl flex items-center">
                   <img
-                    src={profile?.profile_pic || "/assets/default-user.jpg"}
+                    src={profile?.properties.profile_pic || "/assets/default-user.jpg"}
                     alt="user"
                     className="rounded-full w-20 h-20 mx-auto "
                   />

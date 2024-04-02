@@ -22,18 +22,20 @@ const ProfileCard = () => {
     router.replace("/");
   };
 
+  console.log(profile)
+
   return (
     <div className="flex my-2 justify-between font-inter">
       <div className="flex basis-[95%]">
         <Image
-          src={profile?.profile_pic || "/assets/default-user.jpg"}
+          src={profile?.properties?.profile_pic ? `https://cloudflare-ipfs.com/ipfs/${profile?.properties?.profile_pic.substring(7)}` : "/assets/default-user.jpg"}
           width="150"
           height="150"
           alt="profile-pic"
-          className="rounded-full my-auto basis-[28%] w-10 h-12 "
+          className="rounded-full my-auto basis-[28%] w-5 h-12 aspect-square "
         />
         <section className="mx-2 basis-[67%] my-auto">
-          <h2 className="text-sm">{profile?.display_name || "John Doe"}</h2>
+          <h2 className="text-sm">{profile?.properties?.display_name || "John Doe"}</h2>
           <h2 className="text-xs text-[#8F8F8F]">
             @{primaryProfile?.username || "johndoe"}
           </h2>

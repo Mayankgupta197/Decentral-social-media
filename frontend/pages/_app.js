@@ -24,7 +24,7 @@ const client = createClient({
     new CoinbaseWalletConnector({
       chains,
       options: {
-        appName: "Huddler",
+        appName: "Decentral",
         appLogoUrl:
           "https://png.pngtree.com/png-vector/20211106/ourlarge/pngtree-pizza-pixel-png-image_4023257.png",
       },
@@ -34,7 +34,7 @@ const client = createClient({
       options: {
         projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
         metadata: {
-          name: "Huddler",
+          name: "Decentral",
           description: "Social Media for Filecoin",
           url: "",
           icons: [

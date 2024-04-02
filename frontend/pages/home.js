@@ -27,11 +27,12 @@ const Home = () => {
     isLoading ? setLoader(true) : setLoader(false);
     if (data?.length > 0 && !primaryProfile) {
       const resp = data.find((user) => user.account === address);
+      console.log(resp)
       setPrimaryProfile(resp);
     }
     setUsers(data);
   }, [data, isLoading]);
-  console.log(posts);
+  console.log(posts,"posts");
 
   return (
     <div className="flex font-inter ">
@@ -47,9 +48,7 @@ const Home = () => {
         <section className="flex my-2">
           <div className="basis-[70%] px-5 h-[80vh] overflow-y-scroll">
             <PostInput />
-            {/* {!posts && <h2>No Posts</h2>} */}
             {posts && posts.map((post, id) => <PostCard {...post} key={id} />)}
-            {/* {posts && posts.map((post, id) => <PostCard {...post} key={id} />)} */}
           </div>
           <div className="basis-[30%] px-3">
             <h2 className="text-base font-medium">Suggested Followers</h2>

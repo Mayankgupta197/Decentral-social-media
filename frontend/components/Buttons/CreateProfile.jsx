@@ -3,6 +3,7 @@ import HuddleContract from "@/abi/HuddleHubContract.json";
 import useWeb3Storage from "@/hooks/useWeb3Storage";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { File } from 'nft.storage'
 import { useNetwork } from "wagmi";
 import { useContext } from "react";
 import { ProfileContext } from "@/context/profile";
@@ -12,7 +13,7 @@ const CreateProfile = ({ handle, userName, profilePic, bio }) => {
   const { data: signer } = useSigner();
   const router = useRouter();
   const {setLoader } = useContext(ProfileContext);
-  const { storeFile } = useWeb3Storage();
+  const { storeNft } = useWeb3Storage();
 
   const contract = useContract({
     address: HuddleContract.address,
@@ -34,20 +35,14 @@ const CreateProfile = ({ handle, userName, profilePic, bio }) => {
     //   });
     // } else {
       console.log("herre")
-setLoader(true)
-      profilePic = await storeFile(profilePic);
-      const metadata = {
+      setLoader(true)
+      const metadataURI = await storeNft(profilePic,{
         display_name: userName,
-        profile_pic: profilePic,
-        bio: bio,
-        banner: "",
-      };
-      const blob = new Blob([JSON.stringify(metadata)], {
-        type: "application/json",
+          bio: bio,
+          banner: ""
       });
-      const file = new File([blob], "metadata.json");
-      const metadataURI = await storeFile(file);
       const id = await contract.createUser(handle, metadataURI);
+      
       toast.success("User Created", {
         position: "top-right",
         autoClose: 3000,

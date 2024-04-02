@@ -18,7 +18,7 @@ const SuggestedSubscribers = ({ id, username, metadata }) => {
     <div className="flex my-3 justify-between border border-[#5B5B5B] bg-[#13141D] rounded-xl px-4 py-3 mx-auto font-inter">
       <div className="basis-[70%] flex">
         <Image
-          src={profile?.profile_pic || "/assets/default-user.jpg"}
+          src={profile?.properties?.profile_pic ?   `https://cloudflare-ipfs.com/ipfs/${profile?.properties?.profile_pic.substring(7)}` : "/assets/default-user.jpg"}
           width="100"
           height="100"
           alt="profile-pic"
@@ -26,7 +26,7 @@ const SuggestedSubscribers = ({ id, username, metadata }) => {
         />
         <section className="mx-2 my-auto">
           <h2 className="text-sm mb-1 font-medium">
-            {profile?.display_name || "John Doe"}
+            {profile?.properties?.display_name || "John Doe"}
           </h2>
           <h2 className="text-xs text-[#FD5B74]">@{username}</h2>
         </section>

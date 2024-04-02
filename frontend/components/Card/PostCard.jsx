@@ -22,6 +22,7 @@ const PostCard = ({ id, content, created, owner }) => {
     content &&
       axios.get(content).then((res) => {
         setPostData(res.data);
+        console.log(res.data)
       });
   }, [primaryProfile]);
   const handleDisLike = async () => {};
@@ -32,7 +33,7 @@ const PostCard = ({ id, content, created, owner }) => {
       <section className="flex justify-between">
         <div className="basis-[75%] flex justify-start my-3">
           <Image
-            src={postData?.profile_pic || "/assets/default-user-2.png"}
+            src={postData?.properties?.profile_pic ? `https://cloudflare-ipfs.com/ipfs/${postData?.properties?.profile_pic.substring(7)}`:  "/assets/default-user-2.png"}
             alt=""
             height="100"
             width="100"
@@ -40,9 +41,9 @@ const PostCard = ({ id, content, created, owner }) => {
           />
           <span className="ml-2">
             <h2 className="text-base font-medium mt-1">
-              {postData?.display_name || "Sam Mill"}
+              {postData?.properties?.display_name || "Sam Mill"}
             </h2>
-            <h2 className="text-sm">@{postData?.username || "samm"}</h2>
+            <h2 className="text-sm">@{postData?.properties?.username || "samm"}</h2>
           </span>
         </div>
         <h2 className="text-xs text-[#8F8F8F] my-auto">
@@ -54,10 +55,10 @@ const PostCard = ({ id, content, created, owner }) => {
         </h2>
       </section>
       <div>
-        <h2 className="text-sm my-3">{postData?.body}</h2>
-        {postData?.image && (
+        <h2 className="text-sm my-3">{postData?.properties?.body}</h2>
+        {postData?.properties?.image && (
           <Image
-            src={postData?.image || "/assets/img2.png"}
+            src={postData?.properties?.image ? `https://cloudflare-ipfs.com/ipfs/${postData?.properties?.image.substring(7)}` : "/assets/img2.png"}
             alt="post-img"
             width="300"
             height="300"
@@ -182,7 +183,7 @@ const PostCard = ({ id, content, created, owner }) => {
       </section>
       <section className="flex my-3 justify-start">
         <Image
-          src={profile?.profile_pic || "/assets/default-user.jpg"}
+          src={profile?.properties?.profile_pic ?  `https://cloudflare-ipfs.com/ipfs/${profile?.properties?.profile_pic.substring(7)}` : "/assets/default-user.jpg"}
           alt=""
           height="100"
           width="100"
