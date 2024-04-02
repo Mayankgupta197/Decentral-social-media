@@ -64,9 +64,9 @@ const Profile = () => {
             )}
             {showMeet && (
               <div className="px-5 grid grid-cols-2 gap-5 ">
-                {meets.map((meet) => {
+                {meets.map((meet, id) => {
                   if (meet.creator === address) {
-                    return <MeetCard {...meet} />;
+                    return <MeetCard {...meet} key={id} />;
                   }
                 })}
               </div>

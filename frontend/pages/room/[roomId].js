@@ -144,8 +144,8 @@ const Room = () => {
         {Object.values(peers)
           // .slice(1)
           .filter((peer) => peer.cam)
-          .map((peer) => (
-            <div className="relative bg-[#635e5e77] rounded-xl flex items-center">
+          .map((peer,id) => (
+            <div className="relative bg-[#635e5e77] rounded-xl flex items-center" key={id}>
               <Video
                 key={peer.peerId}
                 peerId={peer.peerId}
@@ -157,8 +157,8 @@ const Room = () => {
           ))}
         {Object.values(peers)
           .filter((peer) => peer.mic)
-          .map((peer) => (
-            <Audio key={peer.peerId} peerId={peer.peerId} track={peer.mic} />
+          .map((peer,id) => (
+            <Audio key={peer.peerId} peerId={peer.peerId} track={peer.mic} key={id} />
           ))}
       </div>
       <Modal
