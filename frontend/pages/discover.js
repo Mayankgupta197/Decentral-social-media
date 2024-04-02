@@ -63,25 +63,25 @@ const Discover = () => {
         <div>
           {showAll && (
             <div className="grid grid-cols-4 gap-5 p-5">
-              {meets.map((meet) => (
-                <MeetCard {...meet} />
+              {meets.map((meet,index) => (
+                <MeetCard {...meet} key={index} />
               ))}
             </div>
           )}
           {showFree && (
             <div className="grid grid-cols-4 gap-5 p-5">
-              {meets.map((meet) => {
+              {meets.map((meet,index) => {
                 if (meet.type === "general") {
-                  return <MeetCard {...meet} />;
+                  return <MeetCard {...meet} key={index}/>;
                 }
               })}
             </div>
           )}
           {showPaid && (
             <div className="grid grid-cols-4 gap-5 p-5">
-              {meets.map((meet) => {
+              {meets.map((meet,index) => {
                 if (meet.type === "gated") {
-                  return <MeetCard {...meet} />;
+                  return <MeetCard {...meet} key={index} />;
                 }
               })}
             </div>
