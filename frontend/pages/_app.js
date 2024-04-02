@@ -3,22 +3,24 @@ import React from "react";
 import Image from "next/image";
 import Loader from "@/components/Loader";
 import { WagmiConfig, createClient, configureChains } from "wagmi";
-import { sepolia} from "wagmi/chains";
+import { sepolia } from "wagmi/chains";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { ProfileContextProvider } from "@/context/profile";
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 const { chains, provider } = configureChains(
   [sepolia],
-  [ jsonRpcProvider({
-    rpc: (chain) => ({
-      http: `https://eth-sepolia-public.unifra.io`,
+  [
+    jsonRpcProvider({
+      rpc: (chain) => ({
+        http: `https://eth-sepolia-public.unifra.io`,
+      }),
     }),
-  }),],
+  ]
 );
 
 const client = createClient({
